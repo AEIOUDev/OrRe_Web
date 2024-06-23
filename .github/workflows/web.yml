@@ -68,5 +68,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.EC2_PORT }}
           script: |
+            ls -la /home/ubuntu/web_server/
+            ls -la /home/ubuntu/web_server/web/
             cd /home/ubuntu/web_server
             sudo systemctl restart nginx
