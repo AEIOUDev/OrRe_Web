@@ -57,7 +57,7 @@ jobs:
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.EC2_PORT }}
-          source: "build/web/"
+          source: "build/web/*"
           target: "/home/ubuntu/web_server/web/"
 
       - name: SSH into EC2, update web files, and restart NGINX
@@ -70,7 +70,5 @@ jobs:
           script: |
             ls -la /home/ubuntu/web_server/
             ls -la /home/ubuntu/web_server/web/
-            ls -la /home/ubuntu/web_server/web/build/
-            ls -la /home/ubuntu/web_server/web/build/web/
             cd /home/ubuntu/web_server
             sudo systemctl restart nginx
