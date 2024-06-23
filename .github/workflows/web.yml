@@ -23,7 +23,7 @@ jobs:
         run: flutter pub get
 
       - name: Decrypt index.html.enc
-        run: openssl aes-256-cbc -pbkdf2 -in web/index.html -out web/index.html.enc -k ${{ secrets.INDEX_HTML_PASSWORD}}
+        run: openssl aes-256-cbc -d -pbkdf2 -in web/index.html.enc -out web/index.html -k ${{ secrets.INDEX_HTML_PASSWORD}}
 
       - name: Decrypt .env.enc
         run: openssl aes-256-cbc -d -pbkdf2 -in .env.enc -out .env -k ${{ secrets.ENV_PASSWORD }}
