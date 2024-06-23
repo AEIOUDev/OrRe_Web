@@ -1,5 +1,5 @@
 # Name: Flutter Web Build And Deploy
-name: CI/CD Pipeline with Nginx
+name: CI/CD for Flutter Web
 
 on:
   pull_request:
