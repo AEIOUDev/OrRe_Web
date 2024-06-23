@@ -70,5 +70,7 @@ jobs:
           script: |
             ls -la /home/ubuntu/web_server/
             ls -la /home/ubuntu/web_server/web/
+            ls -la /home/ubuntu/web_server/web/build/
+            ls -la /home/ubuntu/web_server/web/build/web/
             cd /home/ubuntu/web_server
             sudo systemctl restart nginx
