@@ -44,7 +44,7 @@ class BottomButtonSelector extends ConsumerWidget {
     return Container(
       width: MediaQuery.of(context).size.width,
       height: 70,
-      decoration: const BoxDecoration(color: Colors.white),
+      decoration: const BoxDecoration(color: Colors.transparent),
       child: Padding(
         padding: const EdgeInsets.only(bottom: 10),
         child: FloatingActionButton.extended(

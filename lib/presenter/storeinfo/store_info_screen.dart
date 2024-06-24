@@ -10,6 +10,7 @@ import 'package:orre_web/services/debug_services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:orre_web/presenter/storeinfo/menu/store_info_screen_menu_category_list_widget.dart';
 import 'package:orre_web/provider/network/websocket/stomp_client_state_notifier.dart';
+import 'package:orre_web/widget/advertisement/adfit_banner_widget.dart';
 import 'package:orre_web/widget/button/small_button_widget.dart';
 import 'package:orre_web/widget/loading_indicator/coustom_loading_indicator.dart';
 import 'package:orre_web/widget/text/text_widget.dart';
@@ -218,14 +219,15 @@ class _NonNullStoreDetailInfoWidgetState
 
             // WaitingStatusWidget
             Consumer(
-                // Consumer로 감싸서 widget.storeDetailInfoProvider를 감지하고, widget.storeDetailInfo가 변경될 때마다 화면을 갱신
-                builder: (context, ref, child) {
-              return WaitingStatusWidget(
-                storeCode: widget.storeDetailInfo.storeCode,
-                locationInfo: widget.storeDetailInfo.locationInfo,
-              );
-            }),
-
+              // Consumer로 감싸서 widget.storeDetailInfoProvider를 감지하고, widget.storeDetailInfo가 변경될 때마다 화면을 갱신
+              builder: (context, ref, child) {
+                return WaitingStatusWidget(
+                  storeCode: widget.storeDetailInfo.storeCode,
+                  locationInfo: widget.storeDetailInfo.locationInfo,
+                );
+              },
+            ),
+            // 앱 바로가기 버튼
             SliverToBoxAdapter(
               child: Column(
                 children: [
@@ -268,7 +270,7 @@ class _NonNullStoreDetailInfoWidgetState
             ),
             SliverToBoxAdapter(
               child: SizedBox(
-                height: 48.h,
+                height: 56.h,
               ),
             ),
             // PopScope(
@@ -288,17 +290,24 @@ class _NonNullStoreDetailInfoWidgetState
           ],
         ),
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       floatingActionButton:
           widget.storeDetailInfo != StoreDetailInfo.nullValue()
-              ? SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.95,
-                  child: BottomButtonSelector(
-                    storeDetailInfo: widget.storeDetailInfo,
-                    nowWaitable: widget.storeDetailInfo.waitingAvailable == 0,
+              ? Container(
+                  color: Colors.transparent,
+                  child: SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.4,
+                    child: BottomButtonSelector(
+                      storeDetailInfo: widget.storeDetailInfo,
+                      nowWaitable: widget.storeDetailInfo.waitingAvailable == 0,
+                    ),
                   ),
                 )
               : null,
+      bottomNavigationBar: Container(
+        color: Colors.white,
+        child: AdfitBannerWidget(isBigBanner: false, width: 1.sw, height: 50.h),
+      ),
     );
   }
 }
