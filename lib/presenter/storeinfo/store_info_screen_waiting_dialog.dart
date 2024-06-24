@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:loader_overlay/loader_overlay.dart';
 import 'package:orre_web/presenter/storeinfo/agreement_screen.dart';
 import 'package:orre_web/provider/network/websocket/stomp_client_state_notifier.dart';
 import 'package:orre_web/provider/network/websocket/store_detail_info_state_notifier.dart';
@@ -153,6 +154,7 @@ class WaitingDialog extends ConsumerWidget {
           child: TextWidget("확인", fontSize: 16.sp),
           onPressed: () {
             if (formKey.currentState!.validate() && agreement == true) {
+              context.loaderOverlay.show();
               ref.read(agreementState.notifier).state = false;
               // 입력된 정보를 처리합니다.
               printd("전화번호: ${phoneNumberController.text}");
@@ -169,10 +171,12 @@ class WaitingDialog extends ConsumerWidget {
                 Navigator.of(context).pop();
                 if (value == APIResponseStatus.success ||
                     value == APIResponseStatus.waitingAlreadyJoin) {
+                  context.loaderOverlay.hide();
                   context.go(
                       '/reservation/$storeCode/${phoneNumberController.text}');
                 } else {
                   // 웨이팅 참가에 실패할 때의 대화 상자
+                  context.loaderOverlay.hide();
                   showDialog(
                     context: context,
                     builder: (context) => const AlertPopupWidget(

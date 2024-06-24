@@ -8,6 +8,8 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import '../../model/store_info_model.dart';
 import 'package:orre_web/widget/text/text_widget.dart';
 
+import '../../widget/advertisement/adfit_banner_widget.dart';
+
 // 상태 관리를 위한 Provider
 final locationToggleProvider =
     StateNotifierProvider<LocationToggleNotifier, bool>((ref) {
@@ -147,6 +149,9 @@ class _GoogleMapWidgetState extends ConsumerState<GoogleMapWidget> {
             color: Colors.white, fontSize: 32.sp),
         backgroundColor: const Color(0xFFFFB74D),
         foregroundColor: Colors.white,
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(bottom: Radius.circular(30)),
+        ),
       ),
       body: Stack(
         children: [
@@ -171,6 +176,11 @@ class _GoogleMapWidgetState extends ConsumerState<GoogleMapWidget> {
             ),
           ),
         ],
+      ),
+      bottomNavigationBar: Container(
+        color: Colors.white,
+        // child: AdsenseBannerWidget(width: 1.sw, height: 50),
+        child: AdfitBannerWidget(isBigBanner: false, width: 1.sw, height: 50.h),
       ),
     );
   }

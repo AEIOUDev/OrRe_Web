@@ -8,10 +8,13 @@ import 'package:orre_web/presenter/legal/company_footer.dart';
 import 'package:orre_web/presenter/qr_scanner_widget.dart';
 import 'package:orre_web/presenter/waiting/waiting_screen.dart';
 import 'package:orre_web/services/debug_services.dart';
+import 'package:loader_overlay/loader_overlay.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:orre_web/widget/advertisement/adfit_banner_widget.dart';
 import 'package:orre_web/widget/background/waveform_background_widget.dart';
+import 'package:orre_web/widget/button/small_button_widget.dart';
 import 'package:orre_web/widget/popup/alert_popup_widget.dart';
 import 'package:orre_web/widget/text/text_widget.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -20,7 +23,8 @@ import 'package:url_strategy/url_strategy.dart';
 import 'presenter/legal/oss_licenses_screen.dart';
 import 'presenter/storeinfo/store_info_screen.dart';
 import 'services/app_version_service.dart';
-import 'widget/advertisement/adsense_banner_widget.dart';
+import 'widget/loading_indicator/coustom_loading_indicator.dart';
+// import 'widget/advertisement/adsense_banner_widget.dart';
 
 class RouterObserver extends NavigatorObserver {
   @override
@@ -60,13 +64,22 @@ class MyApp extends ConsumerWidget {
     return ScreenUtilInit(
       designSize: const Size(360, 690),
       builder: (context, _) => Builder(
-        builder: (context) => MaterialApp.router(
-          routerConfig: _router,
-          title: '오리',
-          theme: ThemeData(
-            primaryColor: const Color(0xFFFFB74D),
-            colorScheme:
-                ColorScheme.fromSeed(seedColor: const Color(0xFFFFB74D)),
+        builder: (context) => GlobalLoaderOverlay(
+          useDefaultLoading: false,
+          overlayWidgetBuilder: (progress) {
+            return CustomLoadingImage(
+              size: 160.r,
+            );
+          },
+          overlayColor: Colors.black.withOpacity(0.8),
+          child: MaterialApp.router(
+            routerConfig: _router,
+            title: '오리',
+            theme: ThemeData(
+              primaryColor: const Color(0xFFFFB74D),
+              colorScheme:
+                  ColorScheme.fromSeed(seedColor: const Color(0xFFFFB74D)),
+            ),
           ),
         ),
       ),
@@ -198,6 +211,17 @@ class HomePageState extends ConsumerState<HomePage> {
                 fontSize: 16.sp,
                 color: const Color(0xFFFFB74D),
               ),
+              SizedBox(
+                height: 20.r,
+              ),
+              SmallButtonWidget(
+                text: "테스트 가게로 이동",
+                minSize: Size(200.r, 50.r),
+                maxSize: Size(200.r, 50.r),
+                onPressed: () {
+                  context.go('/reservation/999');
+                },
+              ),
               const Spacer(),
               const Spacer(flex: 2),
               // 사업자 정보 Footer
@@ -264,7 +288,8 @@ class HomePageState extends ConsumerState<HomePage> {
       ),
       bottomNavigationBar: Container(
         color: Colors.white,
-        child: AdsenseBannerWidget(width: 1.sw, height: 50.h),
+        // child: AdsenseBannerWidget(width: 1.sw, height: 50),
+        child: AdfitBannerWidget(isBigBanner: false, width: 1.sw, height: 50.h),
       ),
     );
   }
