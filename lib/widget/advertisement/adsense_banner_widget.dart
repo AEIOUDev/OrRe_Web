@@ -35,9 +35,7 @@ class AdsenseBannerWidgetState extends ConsumerState<AdsenseBannerWidget> {
 <ins class="adsbygoogle"
      style="display:block"
      data-ad-client="${dotenv.env['ADSENSE_CLIENT_ID']}"
-     data-ad-slot="3060048968"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
+     data-ad-slot="3060048968"></ins>
 <script>
      (adsbygoogle = window.adsbygoogle || []).push({});
 </script>""",
