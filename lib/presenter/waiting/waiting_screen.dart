@@ -16,6 +16,7 @@ import 'package:orre_web/provider/waiting_usercall_time_list_state_notifier.dart
 import 'package:orre_web/services/app_navigator_service.dart';
 import 'package:orre_web/services/debug_services.dart';
 import 'package:orre_web/widget/advertisement/adfit_banner_widget.dart';
+import 'package:orre_web/widget/advertisement/adsense_banner_widget.dart';
 import 'package:orre_web/widget/button/big_button_widget.dart';
 import 'package:orre_web/widget/loading_indicator/coustom_loading_indicator.dart';
 import 'package:orre_web/widget/popup/alert_popup_widget.dart';
@@ -324,7 +325,7 @@ class _WaitingScreenState extends ConsumerState<WaitingScreen>
       ),
       bottomNavigationBar: Container(
         color: Colors.white,
-        child: AdfitBannerWidget(isBigBanner: false, width: 1.sw, height: 50.h),
+        child: AdsenseBannerWidget(width: 1.sw, height: 50.h),
       ),
     );
   }
