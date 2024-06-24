@@ -15,5 +15,5 @@ Future<void> initializePackageInfo(WidgetRef ref) async {
 
 // TODO : 비정상 작동으로 인한 하드 코딩 버전
 String getAppVersion() {
-  return "1.1.0+8";
+  return "1.1.1+9";
 }

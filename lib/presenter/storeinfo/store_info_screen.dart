@@ -10,7 +10,7 @@ import 'package:orre_web/services/debug_services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:orre_web/presenter/storeinfo/menu/store_info_screen_menu_category_list_widget.dart';
 import 'package:orre_web/provider/network/websocket/stomp_client_state_notifier.dart';
-import 'package:orre_web/widget/advertisement/adfit_banner_widget.dart';
+import 'package:orre_web/widget/advertisement/adsense_banner_widget.dart';
 import 'package:orre_web/widget/button/small_button_widget.dart';
 import 'package:orre_web/widget/loading_indicator/coustom_loading_indicator.dart';
 import 'package:orre_web/widget/text/text_widget.dart';
@@ -306,7 +306,7 @@ class _NonNullStoreDetailInfoWidgetState
               : null,
       bottomNavigationBar: Container(
         color: Colors.white,
-        child: AdfitBannerWidget(isBigBanner: false, width: 1.sw, height: 50.h),
+        child: AdsenseBannerWidget(width: 1.sw, height: 50.h),
       ),
     );
   }

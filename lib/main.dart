@@ -20,6 +20,7 @@ import 'package:url_strategy/url_strategy.dart';
 import 'presenter/legal/oss_licenses_screen.dart';
 import 'presenter/storeinfo/store_info_screen.dart';
 import 'services/app_version_service.dart';
+import 'widget/advertisement/adsense_banner_widget.dart';
 
 class RouterObserver extends NavigatorObserver {
   @override
@@ -260,6 +261,10 @@ class HomePageState extends ConsumerState<HomePage> {
             child: const Icon(Icons.business_rounded),
           ),
         ],
+      ),
+      bottomNavigationBar: Container(
+        color: Colors.white,
+        child: AdsenseBannerWidget(width: 1.sw, height: 50.h),
       ),
     );
   }
