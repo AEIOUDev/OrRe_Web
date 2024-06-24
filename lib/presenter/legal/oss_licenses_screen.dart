@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:orre_web/widget/text/text_widget.dart';
 
 import '../../oss_licenses.dart';
 
@@ -40,7 +41,7 @@ class OssLicensesPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('오픈소스 라이센스'),
+        title: const TextWidget('오픈소스 라이센스'),
         centerTitle: true,
         backgroundColor: Theme.of(context).primaryColor,
         shape: const RoundedRectangleBorder(
@@ -98,7 +99,7 @@ class MiscOssLicenseSingle extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('${package.name} ${package.version}'),
+        title: TextWidget('${package.name} ${package.version}'),
         centerTitle: true,
         backgroundColor: Theme.of(context).primaryColor,
         shape: const RoundedRectangleBorder(

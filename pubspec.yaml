@@ -1,7 +1,7 @@
 name: orre_web
 description: "원격 웨이팅, 원격 주문"
 publish_to: 'none'
-version: 1.1.1+9
+version: 1.1.2+10
 
 environment:
   sdk: '>=3.3.4 <4.0.0'
@@ -51,6 +51,7 @@ dependencies:
   flutter_svg: ^2.0.10+1
   flutter_oss_licenses: ^3.0.2
   webviewx: ^0.1.0
+  loader_overlay: ^4.0.0
 
 dev_dependencies:
   flutter_test:

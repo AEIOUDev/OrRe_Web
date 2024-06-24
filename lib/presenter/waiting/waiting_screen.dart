@@ -325,7 +325,8 @@ class _WaitingScreenState extends ConsumerState<WaitingScreen>
       ),
       bottomNavigationBar: Container(
         color: Colors.white,
-        child: AdsenseBannerWidget(width: 1.sw, height: 50.h),
+        // child: AdsenseBannerWidget(width: 1.sw, height: 50.h),
+        child: AdfitBannerWidget(isBigBanner: false, width: 1.sw, height: 50.h),
       ),
     );
   }

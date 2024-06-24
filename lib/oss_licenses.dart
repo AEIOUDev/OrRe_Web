@@ -14,6 +14,7 @@ const allDependencies = <Package>[
   _archive,
   _args,
   _async,
+  _back_button_interceptor,
   _boolean_selector,
   _cached_network_image,
   _cached_network_image_platform_interface,
@@ -104,6 +105,7 @@ const allDependencies = <Package>[
   _leak_tracker_testing,
   _lints,
   _liquid_pull_to_refresh,
+  _loader_overlay,
   _location,
   _location_platform_interface,
   _location_web,
@@ -222,6 +224,7 @@ const dependencies = <Package>[
   _image_picker,
   _internet_connectivity_checker,
   _liquid_pull_to_refresh,
+  _loader_overlay,
   _location,
   _nfc_manager,
   _package_info_plus,
@@ -506,6 +509,38 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.''',
     isMarkdown: false,
     isSdk: false,
     dependencies: [PackageRef('collection'), PackageRef('meta')]
+  );
+
+/// back_button_interceptor 7.0.3
+const _back_button_interceptor = Package(
+    name: 'back_button_interceptor',
+    description: 'Back Button Interceptor. May be used to do stuff when the Android back-button is tapped, as an alternative to `WillPopScope`.',
+    homepage: 'https://github.com/marcglasberg/back_button_interceptor',
+    authors: [],
+    version: '7.0.3',
+    license: '''Copyright 2019 by Marcelo Glasberg
+
+Redistribution and use in source and binary forms, with or without modification, are permitted
+provided that the following conditions are met:
+
+1. Redistributions of source code must retain the above copyright notice, this list of conditions
+and the following disclaimer.
+
+2. Redistributions in binary form must reproduce the above copyright notice, this list of
+conditions and the following disclaimer in the documentation and/or other materials provided
+with the distribution.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR
+IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY
+AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
+CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.''',
+    isMarkdown: false,
+    isSdk: false,
+    dependencies: [PackageRef('collection'), PackageRef('flutter')]
   );
 
 /// boolean_selector 2.1.1
@@ -5290,6 +5325,39 @@ SOFTWARE.''',
     isMarkdown: false,
     isSdk: false,
     dependencies: [PackageRef('flutter')]
+  );
+
+/// loader_overlay 4.0.0
+const _loader_overlay = Package(
+    name: 'loader_overlay',
+    description: 'A simple package to simplify screen management. When loading any async task, this package prevent the user from interacting with the screen until the async task finishes.',
+    homepage: 'https://github.com/rodrigobastosv/loading_overlay',
+    authors: [],
+    version: '4.0.0',
+    license: '''MIT License
+
+Copyright (c) 2018 Felix Angelov
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.''',
+    isMarkdown: false,
+    isSdk: false,
+    dependencies: [PackageRef('flutter'), PackageRef('back_button_interceptor')]
   );
 
 /// location 6.0.2
