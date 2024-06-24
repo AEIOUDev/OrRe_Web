@@ -50,6 +50,7 @@ dependencies:
   package_info_plus: ^8.0.0
   flutter_svg: ^2.0.10+1
   flutter_oss_licenses: ^3.0.2
+  webviewx: ^0.1.0
 
 dev_dependencies:
   flutter_test:

@@ -18,7 +18,7 @@ class WaitingButton extends ConsumerWidget {
     return Container(
       width: MediaQuery.of(context).size.width,
       height: 70,
-      decoration: BoxDecoration(color: Colors.white),
+      decoration: BoxDecoration(color: Colors.transparent),
       child: Padding(
         padding: EdgeInsets.only(bottom: 10),
         child: FloatingActionButton.extended(
@@ -43,9 +43,9 @@ class WaitingButton extends ConsumerWidget {
               );
             },
             label: waitingState
-                ? Row(
+                ? const Row(
                     children: [
-                      Icon(Icons.person_remove_alt_1),
+                      Icon(Icons.group_remove_rounded),
                       SizedBox(width: 8),
                       TextWidget(
                         '웨이팅 취소',
@@ -53,12 +53,12 @@ class WaitingButton extends ConsumerWidget {
                       ),
                     ],
                   )
-                : Row(
+                : const Row(
                     children: [
-                      Icon(Icons.person_add),
+                      Icon(Icons.group_add_rounded),
                       SizedBox(width: 8),
                       TextWidget(
-                        '웨이팅 시작 / 조회',
+                        '신청 및 조회',
                         color: Colors.white,
                       ),
                     ],
