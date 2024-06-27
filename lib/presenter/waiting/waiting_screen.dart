@@ -323,11 +323,11 @@ class _WaitingScreenState extends ConsumerState<WaitingScreen>
           ),
         ),
       ),
-      bottomNavigationBar: Container(
-        color: Colors.white,
-        // child: AdsenseBannerWidget(width: 1.sw, height: 50.h),
-        child: AdfitBannerWidget(isBigBanner: false, width: 1.sw, height: 50.h),
-      ),
+      // bottomNavigationBar: Container(
+      //   color: Colors.white,
+      //   // child: AdsenseBannerWidget(width: 1.sw, height: 50.h),
+      //   child: AdfitBannerWidget(isBigBanner: false, width: 1.sw, height: 50.h),
+      // ),
     );
   }
 }
@@ -528,6 +528,10 @@ class WaitingStoreItemState extends ConsumerState<WaitingStoreItem> {
                               if (snapshot.connectionState ==
                                   ConnectionState.waiting) {
                                 Future.delayed(Duration.zero, () {
+                                  ref
+                                      .read(storeWaitingInfoNotifierProvider
+                                          .notifier)
+                                      .clearWaitingInfo();
                                   ref
                                       .read(storeWaitingInfoNotifierProvider
                                           .notifier)

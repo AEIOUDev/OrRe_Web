@@ -60,29 +60,26 @@ class _WaitingStatusWidgetState extends ConsumerState<WaitingStatusWidget>
   }
 
   @override
-  void didChangeAppLifecycleState(AppLifecycleState state) {
+  Future<void> didChangeAppLifecycleState(AppLifecycleState state) async {
     super.didChangeAppLifecycleState(state);
     switch (state) {
       case AppLifecycleState.inactive:
         printd('App is inactive');
+        // storeInfo 구독 해제
+        ref.read(storeWaitingInfoNotifierProvider.notifier).clearWaitingInfo();
         break;
       case AppLifecycleState.paused:
         printd('App is in background');
-
-        // storeInfo 구독 해제
-        ref
-            .refresh(storeWaitingInfoNotifierProvider.notifier)
-            .clearWaitingInfo();
         break;
       case AppLifecycleState.resumed:
         printd('App is in foreground');
-
+        await ref.read(nowLocationProvider.notifier).updateNowLocation();
         ref
-            .refresh(storeWaitingInfoNotifierProvider.notifier)
+            .read(storeWaitingInfoNotifierProvider.notifier)
+            .subscribeToStoreWaitingInfo(widget.storeCode);
+        ref
+            .read(storeWaitingInfoNotifierProvider.notifier)
             .sendStoreCode(widget.storeCode);
-        ref
-            .refresh(storeWaitingInfoNotifierProvider.notifier)
-            .reconnectByState();
         break;
       case AppLifecycleState.detached:
         printd('App is detached');
