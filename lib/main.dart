@@ -12,7 +12,7 @@ import 'package:loader_overlay/loader_overlay.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:orre_web/widget/advertisement/adfit_banner_widget.dart';
+// import 'package:orre_web/widget/advertisement/adfit_banner_widget.dart';
 import 'package:orre_web/widget/background/waveform_background_widget.dart';
 import 'package:orre_web/widget/button/small_button_widget.dart';
 import 'package:orre_web/widget/popup/alert_popup_widget.dart';
@@ -286,11 +286,11 @@ class HomePageState extends ConsumerState<HomePage> {
           ),
         ],
       ),
-      bottomNavigationBar: Container(
-        color: Colors.white,
-        // child: AdsenseBannerWidget(width: 1.sw, height: 50),
-        child: AdfitBannerWidget(isBigBanner: false, width: 1.sw, height: 50.h),
-      ),
+      // bottomNavigationBar: Container(
+      //   color: Colors.white,
+      //   // child: AdsenseBannerWidget(width: 1.sw, height: 50),
+      //   child: AdfitBannerWidget(isBigBanner: false, width: 1.sw, height: 50.h),
+      // ),
     );
   }
 }

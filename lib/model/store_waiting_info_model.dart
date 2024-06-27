@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:flutter/foundation.dart';
 
 class StoreWaitingInfo extends Equatable {
   final int storeCode;
@@ -48,4 +49,16 @@ class StoreWaitingInfo extends Equatable {
         enteringTeamList,
         estimatedWaitingTimePerTeam,
       ];
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+
+    return other is StoreWaitingInfo &&
+        other.storeCode == storeCode &&
+        listEquals(other.waitingTeamList, waitingTeamList);
+  }
+
+  @override
+  int get hashCode => storeCode.hashCode ^ waitingTeamList.hashCode;
 }

@@ -8,6 +8,9 @@ import 'package:orre_web/model/store_waiting_info_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:stomp_dart_client/stomp_dart_client.dart';
 
+typedef StompUnsubscribe = void Function(
+    {Map<String, String>? unsubscribeHeaders});
+
 final waitingTeamListProvider = StreamProvider<List<int>>((ref) {
   final storeWaitingInfo = ref.watch(storeWaitingInfoNotifierProvider);
   return Stream<List<int>>.value(storeWaitingInfo?.waitingTeamList ?? []);
@@ -20,7 +23,7 @@ final storeWaitingInfoNotifierProvider =
 
 class StoreWaitingInfoNotifier extends StateNotifier<StoreWaitingInfo?> {
   StompClient? _client;
-  dynamic _subscriptions = {};
+  StompUnsubscribe? _subscriptions;
   int storeCodeForRequest = -1;
 
   StoreWaitingInfoNotifier() : super(null);
@@ -83,13 +86,24 @@ class StoreWaitingInfoNotifier extends StateNotifier<StoreWaitingInfo?> {
   }
 
   void unSubscribe() {
-    printd("unSubscribe StoreWaitingInfo");
+    try {
+      printd("unSubscribe StoreWaitingInfo");
 
-    _subscriptions(unsubscribeHeaders: <String, String>{});
+      if (storeCodeForRequest != -1) {
+        printd(
+            "unSubscribe StoreWaitingInfo storeCodeForRequest : $storeCodeForRequest");
 
-    printd("subscribedsubscriptionsStoreCodes : $_subscriptions");
+        // 올바른 방식으로 _subscriptions 호출
+        _subscriptions?.call(unsubscribeHeaders: {});
+      }
 
-    _subscriptions = {};
+      printd("subscribed subscriptions Store Codes : $_subscriptions");
+    } catch (e) {
+      printd("error : $e");
+    }
+
+    // _subscriptions 변수를 null로 설정
+    _subscriptions = null;
     storeCodeForRequest = -1;
   }
 
