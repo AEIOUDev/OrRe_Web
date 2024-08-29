@@ -44,11 +44,9 @@ jobs:
           script: |
             sudo systemctl stop nginx
             cd /home/ubuntu
-            rm -rf *
-            mkdir web_server
-            cd web_server
-            mkdir web
-            cd web
+            sudo rm -rf /home/ubuntu/web_server
+            sudo mkdir -p /home/ubuntu/web_server/web
+            sudo chown -R $USER:$USER /home/ubuntu/web_server/web
 
       - name: Send files to server
         uses: appleboy/scp-action@master
@@ -73,5 +71,5 @@ jobs:
               mv build/web/* .
               rm -rf build
             fi
+            sudo chown -R www-data:www-data /home/ubuntu/web_server/web
             sudo systemctl restart nginx
-        
