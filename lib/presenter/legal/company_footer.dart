@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../services/app_version_service.dart';
 import '../../widget/text/text_widget.dart';
@@ -45,8 +46,10 @@ class CompanyFooter extends ConsumerWidget {
                   overflow: TextOverflow.ellipsis,
                 ),
                 ElevatedButton(
-                  onPressed: () {
-                    context.push('/contact');
+                  onPressed: () async {
+                    // 문의하기 버튼 클릭 시 카카오톡 플러스 친구로 이동
+                    await launchUrl(
+                        Uri.parse("https://pf.kakao.com/_xlxcxgaG/chat"));
                   },
                   style: TextButton.styleFrom(
                       // 버튼의 크기를 글자 크기에 딱 맞게 설정
