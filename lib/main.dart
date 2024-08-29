@@ -48,45 +48,6 @@ class RouterObserver extends NavigatorObserver {
   }
 }
 
-Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  setPathUrlStrategy();
-  await dotenv.load(fileName: ".env");
-  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
-  runApp(const ProviderScope(child: MyApp()));
-}
-
-class MyApp extends ConsumerWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    return ScreenUtilInit(
-      designSize: const Size(360, 690),
-      builder: (context, _) => Builder(
-        builder: (context) => GlobalLoaderOverlay(
-          useDefaultLoading: false,
-          overlayWidgetBuilder: (progress) {
-            return CustomLoadingImage(
-              size: 160.r,
-            );
-          },
-          overlayColor: Colors.black.withOpacity(0.8),
-          child: MaterialApp.router(
-            routerConfig: _router,
-            title: '오리',
-            theme: ThemeData(
-              primaryColor: const Color(0xFFFFB74D),
-              colorScheme:
-                  ColorScheme.fromSeed(seedColor: const Color(0xFFFFB74D)),
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
 final GoRouter _router = GoRouter(
   initialLocation: "/",
   observers: [RouterObserver()],
@@ -138,6 +99,45 @@ final GoRouter _router = GoRouter(
     return ErrorPage(state.error);
   },
 );
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  setPathUrlStrategy();
+  await dotenv.load(fileName: ".env");
+  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+  runApp(const ProviderScope(child: MyApp()));
+}
+
+class MyApp extends ConsumerWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return ScreenUtilInit(
+      designSize: const Size(360, 690),
+      builder: (context, _) => Builder(
+        builder: (context) => GlobalLoaderOverlay(
+          useDefaultLoading: false,
+          overlayWidgetBuilder: (progress) {
+            return CustomLoadingImage(
+              size: 160.r,
+            );
+          },
+          overlayColor: Colors.black.withOpacity(0.8),
+          child: MaterialApp.router(
+            routerConfig: _router,
+            title: '오리',
+            theme: ThemeData(
+              primaryColor: const Color(0xFFFFB74D),
+              colorScheme:
+                  ColorScheme.fromSeed(seedColor: const Color(0xFFFFB74D)),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
 
 class ErrorPage extends StatelessWidget {
   final Exception? error;
