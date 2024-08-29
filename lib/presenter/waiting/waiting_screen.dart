@@ -711,7 +711,7 @@ class WaitingStoreItemState extends ConsumerState<WaitingStoreItem> {
                   ),
                 ),
                 // 사업자 정보 Footer
-                CompanyFooter(5.sp),
+                CompanyFooter(8.sp),
               ],
             ),
           ),

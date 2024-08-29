@@ -267,7 +267,7 @@ class _NonNullStoreDetailInfoWidgetState
 
             // 사업자 정보 Footer
             SliverToBoxAdapter(
-              child: CompanyFooter(6.sp),
+              child: CompanyFooter(8.sp),
             ),
             SliverToBoxAdapter(
               child: SizedBox(

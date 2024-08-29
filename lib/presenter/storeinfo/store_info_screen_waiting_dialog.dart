@@ -93,18 +93,19 @@ class WaitingDialog extends ConsumerWidget {
               children: <Widget>[
                 IconButton(
                   icon: Icon(Icons.remove,
-                      color: const Color(0xFFFFB74D), size: 20.sp),
+                      color: const Color(0xFFFFB74D), size: 24.sp),
                   onPressed: () {
                     if (numberOfPerson > 1) {
                       ref.read(peopleNumberProvider.notifier).state--;
                     }
                   },
                 ),
+                SizedBox(width: 8.w),
                 Container(
                   padding:
                       EdgeInsets.symmetric(horizontal: 12.r, vertical: 8.r),
-                  width: 48.sp,
-                  height: 48.sp,
+                  width: 80.sp,
+                  height: 80.sp,
                   decoration: BoxDecoration(
                     border:
                         Border.all(color: const Color(0xFFFFB74D), width: 2.r),
@@ -114,12 +115,13 @@ class WaitingDialog extends ConsumerWidget {
                     value: numberOfPerson,
                     suffix: "명",
                     textStyle: TextStyle(
-                        fontFamily: 'Dovemayo_gothic', fontSize: 20.sp),
+                        fontFamily: 'Dovemayo_gothic', fontSize: 24.sp),
                   ),
                 ),
+                SizedBox(width: 8.w),
                 IconButton(
                   icon: Icon(Icons.add,
-                      color: const Color(0xFFFFB74D), size: 20.sp),
+                      color: const Color(0xFFFFB74D), size: 24.sp),
                   onPressed: () {
                     ref.read(peopleNumberProvider.notifier).state++;
                   },

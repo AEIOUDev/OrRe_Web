@@ -29,21 +29,24 @@ class CompanyFooter extends ConsumerWidget {
               children: [
                 Image.asset(
                   'assets/images/orre_logo.png',
-                  width: 50,
-                  height: 50,
+                  width: 30,
+                  height: 30,
                   frameBuilder:
                       (context, child, frame, wasSynchronouslyLoaded) =>
                           ClipOval(
                     child: child,
                   ),
                 ),
-                TextWidget(
-                  "광고나 협업, 기타 문의 사항은 연락주세요!",
-                  fontSize:
-                      Theme.of(context).textTheme.bodyMedium?.fontSize ?? 14,
-                  color: Colors.black,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
+                Container(
+                  width: 200,
+                  child: TextWidget(
+                    "광고나 협업, 기타 문의 사항은\n연락주세요!",
+                    fontSize:
+                        Theme.of(context).textTheme.bodyMedium?.fontSize ?? 14,
+                    color: Colors.black,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                  ),
                 ),
                 ElevatedButton(
                   onPressed: () async {
@@ -64,46 +67,54 @@ class CompanyFooter extends ConsumerWidget {
             ),
           ),
           const SizedBox(height: 16),
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
+          Column(
             children: [
-              TextWidget(
-                "단모음데브 대표 정민호 | ",
-                fontSize: fontSize,
-                color: Colors.grey,
-              ),
-              TextWidget("주소 : 경기도 용인시 기흥구 보정동 1189-3, 3층 일부 | ",
-                  fontSize: fontSize, color: Colors.grey),
-              TextWidget(
-                "사업자 등록번호 865-18-02259 | ",
-                fontSize: fontSize,
-                color: Colors.grey,
-              ),
-              Consumer(
-                builder: (context, ref, child) {
-                  // final appVersion = ref.watch(appVersionProvider);
-                  return TextWidget(
-                    "버전 : ${getAppVersion()} | ",
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  TextWidget(
+                    "단모음데브 대표 정민호 | ",
                     fontSize: fontSize,
                     color: Colors.grey,
-                  );
-                },
+                  ),
+                  TextWidget("주소 : 경기도 용인시 기흥구 보정동 1189-3, 3층 일부",
+                      fontSize: fontSize, color: Colors.grey),
+                ],
               ),
-              TextButton(
-                onPressed: () {
-                  context.push('/legal/license');
-                },
-                style: TextButton.styleFrom(
-                  // 버튼의 크기를 글자 크기에 딱 맞게 설정
-                  minimumSize: const Size(0, 0),
-                  padding: EdgeInsets.zero,
-                ),
-                child: TextWidget(
-                  "라이센스",
-                  fontSize: fontSize,
-                  color: Colors.grey,
-                ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  TextWidget(
+                    "사업자 등록번호 865-18-02259 | ",
+                    fontSize: fontSize,
+                    color: Colors.grey,
+                  ),
+                  Consumer(
+                    builder: (context, ref, child) {
+                      // final appVersion = ref.watch(appVersionProvider);
+                      return TextWidget(
+                        "버전 : ${getAppVersion()} | ",
+                        fontSize: fontSize,
+                        color: Colors.grey,
+                      );
+                    },
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      context.push('/legal/license');
+                    },
+                    style: TextButton.styleFrom(
+                      // 버튼의 크기를 글자 크기에 딱 맞게 설정
+                      minimumSize: const Size(0, 0),
+                      padding: EdgeInsets.zero,
+                    ),
+                    child: TextWidget(
+                      "라이센스",
+                      fontSize: fontSize,
+                      color: Colors.grey,
+                    ),
+                  ),
+                ],
               ),
             ],
           ),
