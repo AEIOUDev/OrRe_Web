@@ -17,7 +17,7 @@ jobs:
         uses: subosito/flutter-action@v2.12.0
         with:
           channel: 'stable'
-          flutter-version: '3.19.6'
+          flutter-version: '3.24.1'
 
       - name: Get Flutter dependencies
         run: flutter pub get
@@ -35,7 +35,7 @@ jobs:
         run: ls -la build/web/
 
       - name: Server Init
-        uses: appleboy/ssh-action@v0.1.3
+        uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USER }}
@@ -61,7 +61,7 @@ jobs:
           target: "/home/ubuntu/web_server/web/"
 
       - name: SSH into EC2, organize files, and restart NGINX
-        uses: appleboy/ssh-action@v0.1.3
+        uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USER }}
