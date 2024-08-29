@@ -225,7 +225,7 @@ class HomePageState extends ConsumerState<HomePage> {
               const Spacer(),
               const Spacer(flex: 2),
               // 사업자 정보 Footer
-              CompanyFooter(5.sp),
+              CompanyFooter(8.sp),
             ],
           ),
         ),
