@@ -176,58 +176,50 @@ class HomePageState extends ConsumerState<HomePage> {
     return Scaffold(
       body: WaveformBackgroundWidget(
         backgroundColor: Colors.white,
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              SizedBox(height: MediaQuery.of(context).size.height * 0.25),
-              TextWidget(
-                '오리',
-                fontFamily: 'Dovemayo_gothic',
-                fontSize: 48.r,
-                color: Colors.black,
-                letterSpacing: 32.r,
-              ),
-              SizedBox(
-                height: 20.r,
-              ),
-              ClipOval(
-                child: Container(
-                  color: const Color(0xFFFFB74D),
-                  child: Image.asset(
-                    "assets/images/orre_logo.png",
-                    width: 200.r,
-                    height: 200.r,
-                  ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            SizedBox(height: MediaQuery.of(context).size.height * 0.15),
+            TextWidget(
+              '오리',
+              fontFamily: 'Dovemayo_gothic',
+              fontSize: 48.r,
+              color: Colors.black,
+              letterSpacing: 32.r,
+            ),
+            SizedBox(
+              height: 10.r,
+            ),
+            ClipOval(
+              child: Container(
+                color: const Color(0xFFFFB74D),
+                child: Image.asset(
+                  "assets/images/orre_logo.png",
+                  width: 200.r,
+                  height: 200.r,
                 ),
               ),
-              SizedBox(
-                height: 20.r,
-              ),
-              TextWidget(
-                '원격 줄서기, 원격 주문 서비스',
-                fontFamily: 'Dovemayo_gothic',
-                fontSize: 16.sp,
-                color: const Color(0xFFFFB74D),
-              ),
-              SizedBox(
-                height: 20.r,
-              ),
-              SmallButtonWidget(
-                text: "테스트 가게로 이동",
-                minSize: Size(200.r, 50.r),
-                maxSize: Size(200.r, 50.r),
-                onPressed: () {
-                  context.go('/reservation/999');
-                },
-              ),
-              const Spacer(),
-              const Spacer(flex: 2),
-              // 사업자 정보 Footer
-              CompanyFooter(8.sp),
-            ],
-          ),
+            ),
+            TextWidget(
+              '원격 줄서기, 원격 주문 서비스',
+              fontFamily: 'Dovemayo_gothic',
+              fontSize: 16.sp,
+              color: const Color(0xFFFFB74D),
+            ),
+            // SmallButtonWidget(
+            //   text: "테스트 가게로 이동",
+            //   minSize: Size(200.r, 50.r),
+            //   maxSize: Size(200.r, 50.r),
+            //   onPressed: () {
+            //     context.go('/reservation/999');
+            //   },
+            // ),
+            // const Spacer(),
+            // const Spacer(flex: 2),
+            // 사업자 정보 Footer
+            CompanyFooter(8.sp),
+          ],
         ),
       ),
       floatingActionButtonLocation: ExpandableFab.location,
